@@ -1,25 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta http-equiv="refresh" content="0; URL='https://www.magazinevoce.com.br/magazinemadsil/'" />
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0d6efd">
-  <title>Magalu Madsil</title>
+  <title>Magazine Madsil</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #0d6efd;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    p {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecionando para a loja...</p>
-<script>
-  if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('ServiceWorker registrado com sucesso:', registration);
-      })
-      .catch(error => {
-        console.log('Falha no registro do ServiceWorker:', error);
+  <div class="loader"></div>
+  <p>Abrindo Magazine Madsil</p>
+
+  <script>
+    window.location.href = "https://www.magazinevoce.com.br/magazinemadsil/";
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('Service worker registrado:', reg))
+          .catch(err => console.log('Erro no registro do service worker:', err));
       });
-  });
-}
-</script>
+    }
+  </script>
 </body>
 </html>
