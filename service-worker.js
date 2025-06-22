@@ -1,26 +1,39 @@
-const CACHE_NAME = 'madsil-cache-v1';
+const CACHE_NAME = "magalu-cache-v1";
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/icon-192.png',
-  '/icon-512.png',
-  // Adicione outros arquivos como CSS, JS, imagens importantes
+  "/",
+  "/index.html",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/manifest.json"
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
+
+self.addEventListener("activate", event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
