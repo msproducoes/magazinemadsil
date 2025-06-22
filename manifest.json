@@ -1,11 +1,11 @@
 {
   "name": "Magazine Madsil",
-  "short_name": "Magazine Madsil",
+  "short_name": "Magalu Madsil",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d6efd",
-  "description": "Qualidade muito além do básico",
+  "description": "Sua loja Magalu com ofertas incríveis e produtos de qualidade!",
   "icons": [
     {
       "src": "icon-192.png",
