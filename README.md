@@ -1,4 +1,4 @@
-# Loja MagaZINE Madsil - PWA
+# Loja Magazine Madsil - PWA
 
 Este é um Progressive Web App (PWA) que permite que sua loja Magalu seja instalada como um aplicativo no celular ou computador.
 
